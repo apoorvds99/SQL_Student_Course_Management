@@ -1,0 +1,56 @@
+-- Project: Student Course Management System
+
+
+-- List of All Students:
+SELECT * FROM Students;
+
+-- All Courses a Specific Student is Enrolled In:
+SELECT c.course_name, e.enrollment_date
+FROM Courses c
+JOIN Enrollment e ON c.course_id = e.course_id
+JOIN Students s ON e.student_id = s.student_id
+WHERE s.student_id = 1;  -- Replace with specific student_id
+
+-- List of All Instructors and Their Courses:
+SELECT i.first_name, i.last_name, c.course_name
+FROM Instructors i
+JOIN Courses c ON i.instructor_id = c.course_id;
+
+-- Average Grade for Each Course
+SELECT c.course_name, AVG(CASE 
+    WHEN g.grade = 'A' THEN 4.0
+    WHEN g.grade = 'B+' THEN 3.5
+    WHEN g.grade = 'B' THEN 3.0
+    WHEN g.grade = 'A-' THEN 3.7
+    END) AS average_grade
+FROM Courses c
+JOIN Enrollment e ON c.course_id = e.course_id
+JOIN Grades g ON e.enrollment_id = g.enrollment_id
+GROUP BY c.course_name;
+
+
+-- Courses that have no students enrolled:
+SELECT c.course_name
+FROM courses c
+LEFT JOIN enrollment e ON c.course_id = e.course_id
+WHERE e.student_id IS NULL;
+
+-- List of students who have enrolled in more than one course:
+SELECT s.first_name, s.last_name, COUNT(e.course_id) AS courses_enrolled
+FROM students s
+JOIN enrollment e ON s.student_id = e.student_id
+GROUP BY s.first_name, s.last_name
+HAVING COUNT(e.course_id) > 1;
+
+-- Update a grade for a specific student in a specific course
+UPDATE grades
+SET grade = 'A'
+WHERE enrollment_id = (SELECT enrollment_id FROM enrollment WHERE student_id = 1 AND course_id = 2);
+
+-- List of courses with the total credits enrolled by all students
+
+SELECT c.course_name, SUM(c.credits) AS total_credits
+FROM courses c
+JOIN enrollment e ON c.course_id = e.course_id
+GROUP BY c.course_name;
+
