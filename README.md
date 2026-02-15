@@ -1,12 +1,32 @@
-SQL_Student_Course_Management
+# SQL Student Course Management System
 
-Designed and implemented a relational database to manage student enrollments, courses, instructors, and grades, optimizing performance with SQL queries and indexing.
+## Overview
+A SQL-based project designed to manage student course data and perform business-style queries to extract meaningful insights.
 
-Project Highlights:
-Designed normalized relational tables with appropriate constraints.
+## Objective
+- Manage student, course, and enrollment data
+- Perform analytical queries using SQL
+- Practice real-world database operations
 
-Wrote SQL queries to analyze student performance and course popularity.
+## Tools Used
+- SQL
+- MySQL
 
-Implemented indexing and optimized joins for efficient data retrieval.
+## Key Operations
+- Joins between multiple tables
+- Aggregations and grouping
+- Subqueries and filtering
+- Business-style analytical queries
 
-Tracked enrollments and identified high-performing students through insights.
+## Key Insights
+- Student enrollment trends across courses
+- Course popularity based on registrations
+- Performance analysis using aggregated data
+
+## Files
+- SQL scripts for database creation
+- Query files for analysis
+- Excel file
+## Author
+Apoorv Singh  
+Aspiring Data Scientist
