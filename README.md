@@ -29,4 +29,4 @@ A SQL-based project designed to manage student course data and perform business-
 - Excel file
 ## Author
 Apoorv Singh  
-Aspiring Data Scientist
+
